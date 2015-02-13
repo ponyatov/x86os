@@ -1,5 +1,5 @@
 GZ = $(PWD)/gz
-TC = $(PWD)/$(CPU).tc
+TC = $(PWD)/$(CPU).cross
 SRC = $(PWD)/src
 TMP = $(PWD)/tmp
 
