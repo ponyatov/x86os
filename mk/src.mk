@@ -10,7 +10,7 @@ WGET = wget -N -P gz
 gz:
 	$(WGET) http://ftp.gnu.org/gnu/binutils/$(BINUTILS).tar.bz2
 	$(WGET) http://gcc.skazkaforyou.com/releases/$(GCC)/$(GCC).tar.bz2
-	$(WGET) ftp://ftp.gmplib.org/pub/gmp/$(GMP).tar.bz2
+	$(WGET) https://gmplib.org/download/gmp/$(GMP).tar.bz2
 	$(WGET) http://www.mpfr.org/mpfr-current/$(MPFR).tar.bz2
 	$(WGET) http://www.multiprecision.org/mpc/download/$(MPC).tar.gz
 

@@ -1,5 +1,4 @@
-
-CPU = i486
+include cfg.mk
 
 .PHONY: all  
 all:

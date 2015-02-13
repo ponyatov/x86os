@@ -3,14 +3,14 @@
 
 \secrel{Ресурсы}
 
-\href{http://wiki.osdev.org}{OS Dev wiki}
+\url{http://wiki.osdev.org}
 
 \bigskip
 
 \href{http://www.frolov-lib.ru/bsp.html}{Библиотека системного программиста
 \copyright\ Александр Фролов, Григорий Фролов}:
 
-\begin{itemize}
+\begin{itemize}[nosep]
   \item \href{http://www.frolov-lib.ru/books/bsp/v01a/index.html}{Операционная
   система MS-DOS. Том 1, книги 1-2}
   \item \href{http://www.frolov-lib.ru/books/bsp/v01b/index.html}{Операционная
@@ -24,26 +24,33 @@
 
 \bigskip
 
+Графика:
+
+\begin{itemize}
+
+\item 
 Уилтон Р. 
 
 Видеосистемы персональных компьютеров IBM РС и РS/2.
 
 Радио и связь, 1994
 
-\bigskip
+\item
 
 \href{http://ict.informika.ru/ft/004761/vasilev.pdf}{С.А.Васильев
 Программирвание видеосистем, ТГТУ, 2003}
 
-\bigskip
+\item
 
 Е.В. Шикин, А.В. Боресков
 
-\begin{itemize}
+\begin{itemize}[nosep]
 \item Компьютерная графика. Динамика, реалистические изображения.
 Диалог-МИФИ, 1996
 \item Компьютерная графика. Полигональные модели. Диалог-МИФИ, 2001
 \item Начала компьютерной графики. Диалог-МИФИ, 1993
+\end{itemize}
+
 \end{itemize}
 
 \secrel{Структура}
@@ -59,8 +66,28 @@
 
 \secrel{Процесс запуска}
 
+\begin{enumerate}
+  \item BIOS
+  \item boot0 первый сектор загрузочного диска, считывает boot1
+  \item boot1 основная часть загрузчика, в файле на загрузочном диске
+  \item ядро ОС
+  \item запуск драйверов
+  \item запуск системных демонов (сервисы)
+  \item запуск GUI (если есть) или пользовательской консоли
+\end{enumerate}
+
 \secrel{Сборка кросс-компилятора}
 
+\begin{verbatim}
+git clone --depth=1 -o gh https://github.com/ponyatov/x86os.git
+cd x86os 
+make dirs
+make gz
+
+make cross
+\end{verbatim}
+
+\lstx{cfg.mk}{}{x86os/cfg.mk}{mk}
 \lstx{mk/versions.mk}{}{x86os/mk/versions.mk}{mk}
 \lstx{mk/dirs.mk}{}{x86os/mk/dirs.mk}{mk}
 \lstx{mk/src.mk}{}{x86os/mk/src.mk}{mk}
