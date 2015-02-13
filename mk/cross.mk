@@ -46,11 +46,16 @@ mpc: $(SRC)/$(MPC)/README
 	$(SRC)/$(MPC)/$(CFG) $(CFG_MPC) &&\
 	$(MAKE) && $(INSTALL)-strip
 
-CFG_GCC = $(CFG_BINUTILS) --enable-languages="c,c++" \
-	--without-headers --with-newlib
+CFG_GCC = $(CFG_BINUTILS) $(CFG_CCLIBS) \
+	--without-headers --with-newlib \
+	--enable-languages="c,c++"
 	
 .PHONY: gcc
 gcc: $(SRC)/$(GCC)/README
 	rm -rf $(TMP)/$(GCC) && mkdir $(TMP)/$(GCC) &&\
 	cd $(TMP)/$(GCC) &&\
 	$(SRC)/$(GCC)/$(CFG) $(CFG_GCC)
+	cd $(TMP)/$(GCC) && $(MAKE) all-gcc
+	cd $(TMP)/$(GCC) && $(MAKE) install-gcc
+	cd $(TMP)/$(GCC) && $(MAKE) all-target-libgcc
+	cd $(TMP)/$(GCC) && $(MAKE) install-target-libgcc
