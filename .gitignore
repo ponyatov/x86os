@@ -3,4 +3,5 @@ src
 tmp
 i486.cross
 kernel.elf
+kernel.elf.objdump
 

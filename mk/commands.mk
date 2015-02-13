@@ -9,3 +9,5 @@ XPATH = PATH=$(TC)/bin:$(PATH)
 
 TCC  = $(XPATH) $(CCACHE) $(TARGET)-gcc -pipe
 TCXX = $(XPATH) $(CCACHE) $(TARGET)-g++ -pipe
+
+OBJDUMP = $(XPATH) $(TARGET)-objdump
