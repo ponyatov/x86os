@@ -2,4 +2,5 @@ gz
 src
 tmp
 i486.cross
+kernel.elf
 

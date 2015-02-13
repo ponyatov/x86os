@@ -8,8 +8,8 @@ CFG = configure --prefix=$(TC) --disable-nls --disable-werror \
 .PHONY: cross
 cross: binutils cclibs gcc
 
-CFG_BINUTILS = --target=$(TARGET) 
-#	--enable-lto --disable-multilib
+CFG_BINUTILS = --target=$(TARGET) \
+	--with-sysroot=$(PWD) --with-native-system-header-dir=/include
 
 .PHONY: binutils
 binutils: $(SRC)/$(BINUTILS)/README
@@ -18,33 +18,7 @@ binutils: $(SRC)/$(BINUTILS)/README
 	$(SRC)/$(BINUTILS)/$(CFG) $(CFG_BINUTILS) &&\
 	$(MAKE) && $(INSTALL)-strip
 
-CFG_CCLIBS = --disable-shared --with-gmp=$(TC)
-.PHONY: cclibs
-cclibs: gmp mpfr mpc
-
-CFG_GMP = $(CFG_CCLIBS)
-.PHONY: gmp
-gmp: $(SRC)/$(GMP)/README
-	rm -rf $(TMP)/$(GMP) && mkdir $(TMP)/$(GMP) &&\
-	cd $(TMP)/$(GMP) &&\
-	$(SRC)/$(GMP)/$(CFG) $(CFG_GMP) &&\
-	$(MAKE) && $(INSTALL)-strip
-
-CFG_MPFR = $(CFG_CCLIBS)
-.PHONY: mpfr
-mpfr: $(SRC)/$(MPFR)/README
-	rm -rf $(TMP)/$(MPFR) && mkdir $(TMP)/$(MPFR) &&\
-	cd $(TMP)/$(MPFR) &&\
-	$(SRC)/$(MPFR)/$(CFG) $(CFG_MPFR) &&\
-	$(MAKE) && $(INSTALL)-strip
-
-CFG_MPC = $(CFG_CCLIBS)
-.PHONY: mpc
-mpc: $(SRC)/$(MPC)/README
-	rm -rf $(TMP)/$(MPC) && mkdir $(TMP)/$(MPC) &&\
-	cd $(TMP)/$(MPC) &&\
-	$(SRC)/$(MPC)/$(CFG) $(CFG_MPC) &&\
-	$(MAKE) && $(INSTALL)-strip
+include mk/cclibs.mk
 
 CFG_GCC = $(CFG_BINUTILS) $(CFG_CCLIBS) \
 	--without-headers --with-newlib \
