@@ -7,14 +7,6 @@ all:
 .PHONY: clean
 clean:
 
-GZ = $(PWD)/gz
-TC = $(PWD)/$(CPU).tc
-SRC = $(PWD)/src
-TMP = $(PWD)/tmp
-
-DIRS = $(GZ) $(TC) $(SRC) $(TMP)
-.PHONY: dirs
-dirs:
-	mkdir -p $(DIRS)
-
-include cross.mk
+include mk/dirs.mk
+include mk/src.mk
+include mk/cross.mk
