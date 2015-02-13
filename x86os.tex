@@ -98,6 +98,27 @@ make cross
 Как вы можете заметить, структура файлов и каталогов похожа на
 \prog{azlin} /\ref{azlin}/.
 
+\secrel{Формат ELF32}
+
+Собранный кросс-компилятор генерирует исполняемые файлы, т.е. файл ядра, в
+формате \termdef{ELF}{ELF}. Содержание можно посмотреть в файле
+\file{kernel.objdump}, который создается при выполнении команды 
+
+\begin{verbatim}
+make kernel
+\end{verbatim}
+
+\begin{tabular}{l l l}
+формат файла & elf32-i386 \\
+архитектура & i386 \\
+HAS\_SYMS & в файл включена отладочная информация \\& об идентификаторах
+(``символах'')\\
+start address & 0x00100000 & стартовый адрес загрузки \\&&(ядра) выше первого
+Мб\\
+\end{tabular}
+
+\lst{kernel.objdump}{}{x86os/kernel.objdump}
+
 \secrel{multiboot}
 
 \href{http://www.syslinux.org/}{загрузчик SysLinux}
@@ -107,7 +128,10 @@ Multiboot 0.6.96}
 
 \secrel{Драйвера}\secdown
 
-\secrel{\prog{vgacon}: текстовая консоль VGA 80$\times$25}
+\secrel{\prog{vga}: текстовая консоль VGA 80$\times$25}
+
+\lstx{include/driver/vga.h}{}{x86os/include/driver/vga.h}{c}
+\lstx{driver/vga.c}{}{x86os/driver/vga.c}{c}
 
 \secrel{\prog{kbd}: клавиатура}
 
