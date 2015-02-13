@@ -1,11 +1,3 @@
-
-BINUTILS = binutils-$(BINUTILS_VER)
-GMP = gmp-$(GMP_VER)
-MPFR = mpfr-$(MPFR_VER)
-MPC = mpc-$(MPC_VER)
-GCC = gcc-$(GCC_VER)
-
-WGET = wget -N -P gz
 .PHONY: gz
 gz:
 	$(WGET) http://ftp.gnu.org/gnu/binutils/$(BINUTILS).tar.bz2
@@ -13,6 +5,8 @@ gz:
 	$(WGET) https://gmplib.org/download/gmp/$(GMP).tar.bz2
 	$(WGET) http://www.mpfr.org/mpfr-current/$(MPFR).tar.bz2
 	$(WGET) http://www.multiprecision.org/mpc/download/$(MPC).tar.gz
+	$(WGET) ftp://sourceware.org/pub/newlib/$(NEWLIB).tar.gz
+	$(WGET) https://www.kernel.org/pub/linux/utils/boot/syslinux/$(SYSLINUX).tar.xz
 
 $(SRC)/%/README: $(GZ)/%.tar.gz
 	cd $(SRC) &&  zcat $< | tar x && touch $@

@@ -1,15 +1,10 @@
-
 TARGET = $(CPU)-elf
+CCACHE = ccache
 
 CFG = configure --disable-nls --disable-werror \
-	CC="ccache gcc -pipe" CFLAGS="-march=native -Ofast" \
+	CC="$(CCACHE) gcc -pipe" CFLAGS="-march=native -Ofast" \
 	--infodir=$(TMP)/info --mandir=$(TMP)/man
 	
-CPU_CORES  = $(shell grep processor /proc/cpuinfo |wc -l)
-
-MAKE = make -j$(CPU_CORES)
-INSTALL  = make install
-
 .PHONY: cross
 cross: binutils
 
