@@ -113,11 +113,33 @@ make kernel
 архитектура & i386 \\
 HAS\_SYMS & в файл включена отладочная информация \\& об идентификаторах
 (``символах'')\\
-start address & 0x00100000 & стартовый адрес загрузки \\&&(ядра) выше первого
-Мб\\
+start address & 0x00100000 & стартовый адрес загрузки ядра 1\,Мб\\
 \end{tabular}
 
-\lst{kernel.objdump}{}{x86os/kernel.objdump}
+\bigskip
+Бинарный код делится на \termdef{секции}{секция ELF}, или
+\termdef{сегменты}{сегмент}:
+
+\begin{tabular}{l l}
+.text & машииный код программы \\
+.rodata & данные: константы \\
+.eh\_frame &\\
+.data & данные: инициализированные массивы, строки \\
+.bss & данные: пустые массивы под которые выделяется память при старте \\
+.comment &\\
+\end{tabular}
+
+\bigskip
+\begin{tabular}{l l}
+CONTENTS & \\
+ALLOC & \\
+LOAD & \\
+READONLY & \\
+CODE & \\
+DATA & \\
+\end{tabular}
+
+\lstx{kernel.objdump}{}{x86os/kernel.objdump}{objdump}
 
 \secrel{multiboot}
 

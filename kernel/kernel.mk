@@ -4,4 +4,4 @@ KERNEL = kernel/kernel.c
 kernel: kernel.elf
 kernel.elf: $(KERNEL) $(DRIVER) $(USER) cfg.mk
 	$(TCC) $(TCFLAGS) -o $@ $(KERNEL) $(DRIVER) $(USER) &&\
-	$(OBJDUMP) -x $@ > kernel.objdump
+	$(OBJDUMP) -txd $@ > kernel.objdump
