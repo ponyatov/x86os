@@ -8,7 +8,7 @@ CFG = configure --prefix=$(TC) --disable-nls --disable-werror \
 .PHONY: cross
 cross: binutils cclibs gcc
 
-CFG_BINUTILS = --target=$(TARGET) \
+CFG_BINUTILS = --target=$(TARGET) --enable-lto \
 	--with-sysroot=$(PWD) --with-native-system-header-dir=/include
 
 .PHONY: binutils
