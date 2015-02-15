@@ -1,7 +1,8 @@
-KERNEL = kernel/kernel.c
+KERNEL =  kernel/multiboot.S
+KERNEL += kernel/kernel.c
 
 .PHONY: kernel
 kernel: kernel.elf
-kernel.elf: $(KERNEL) $(DRIVER) $(USER) cfg.mk
-	$(TCC) $(TCFLAGS) -o $@ $(KERNEL) $(DRIVER) $(USER) &&\
-	$(OBJDUMP) -x $@ > kernel.objdump
+kernel.elf: $(KERNEL) $(DRIVER) $(USER) cfg.mk x86os.ld
+	$(TCC) $(TCFLAGS) -o $@ $(KERNEL) $(DRIVER) $(USER)
+	$(OBJDUMP) -xd $@ > kernel.objdump

@@ -152,15 +152,21 @@ DATA & \\
 
 \href{http://www.gnu.org/software/grub/manual/multiboot/multiboot.html}{Специфиация
 Multiboot 0.6.96}
+
+\href{http://gownos.blogspot.ru/2011/10/multiboot-specification.html}{Перевод
+Multiboot Specification}
 \bigskip
 
 Для упрощения некоторые файлы, в т.ч. multiboot, были заимствованы из исходных
 текстов syslinux:
 
 \begin{verbatim}
-src/syslinux-6.03/gpxe/src/arch/i386/image/multiboot.c
 src/syslinux-6.03/gpxe/src/arch/i386/include/multiboot.h
 \end{verbatim}
+
+\lst{kernel/x86os.ld}{}{x86os/x86os.ld}
+
+\lst{kernel/multiboot.S}{}{x86os/kernel/multiboot.S}
 
 \secrel{Микроядро}\secdown
 

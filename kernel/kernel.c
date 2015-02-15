@@ -4,8 +4,5 @@
 
 void _start() {
 	vga_init();
-	//for (;;)
-		user();
-	__asm("cli");
-	__asm("hlt");
+	user();
 }
