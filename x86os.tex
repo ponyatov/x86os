@@ -143,10 +143,24 @@ DATA & \\
 
 \secrel{multiboot}
 
+Для запуска ОС не нужно писать свой загрузчик: с этим легко справится любой
+современный универсальный загрузчик, поддерживающий стандарт
+\termdef{multiboot}{multiboot}: GRUB или SysLinux.
+
+\bigskip
 \href{http://www.syslinux.org/}{загрузчик SysLinux}
 
 \href{http://www.gnu.org/software/grub/manual/multiboot/multiboot.html}{Специфиация
 Multiboot 0.6.96}
+\bigskip
+
+Для упрощения некоторые файлы, в т.ч. multiboot, были заимствованы из исходных
+текстов syslinux:
+
+\begin{verbatim}
+src/syslinux-6.03/gpxe/src/arch/i386/image/multiboot.c
+src/syslinux-6.03/gpxe/src/arch/i386/include/multiboot.h
+\end{verbatim}
 
 \secrel{Микроядро}\secdown
 
