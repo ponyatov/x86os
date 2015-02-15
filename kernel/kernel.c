@@ -4,5 +4,6 @@
 
 void _start() {
 	vga_init();
+	vga_write("x86os @ https://github.com/ponyatov/Azbuka/blob/master/Azbuka.pdf?raw=true\n\n");
 	user();
 }
