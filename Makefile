@@ -15,3 +15,4 @@ include mk/cross.mk
 include user/user.mk
 include driver/driver.mk
 include kernel/kernel.mk
+include mk/emu.mk
