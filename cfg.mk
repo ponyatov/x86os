@@ -1,2 +1,2 @@
 CPU = i486
-TCFLAGS = -g0 -O0 -nostdlib -std=c99 -Tx86os.ld
+TCFLAGS = -g0 -O0 -nostdlib -ffreestanding -Tx86os.ld -std=c99

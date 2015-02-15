@@ -1,15 +1,24 @@
 // Std.VGA 80x25 text console driver
 
+#include <stdint.h>
 #include <driver/vga.h>
 
-const unsigned char vga_cols = VGA_COLS;
-const unsigned char vga_rows = VGA_ROWS;
+const uint8_t vga_cols = VGA_COLS;
+const uint8_t vga_rows = VGA_ROWS;
 
-unsigned char *vga_buf = (unsigned char *) (VGA_ADDR);
-unsigned int vga_ptr = 0;
+uint8_t *vga_buf = (unsigned char *) (VGA_ADDR);
+
+uint8_t vga_fg=COLOR_GREEN;
+uint8_t vga_bg=COLOR_BLACK;
+
+uint8_t vga_cursor_row=0;
+uint8_t vga_cursor_col=0;
 
 void vga_init() {
-	vga_ptr = 0;
-	for (int i = 0; i < VGA_COLS * 3 / 2; i++)
-		vga_buf[vga_ptr++] = 0xFF;
+	vga_cursor_row=0;
+	vga_cursor_col=0;
+}
+
+void vga_write(char *msg) {
+
 }
